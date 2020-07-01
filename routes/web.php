@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Auth::routes();
 
-//Route::get('/', 'HomeController@index')->name('home');
-//Route::get('/product', 'HomeController@index')->name('home');
+Route::get('/', 'ProductController@index')->name('home');
+
+Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
+    Route::get('/home', 'ProductController@index')->name('home');
+    Route::get('/category/{id}', 'HomeController@category')->name('category');
+    Route::get('/buy', 'OrderController@buy')->name('buy');
+    Route::get('/orders', 'OrderController@orders')->name('orders');
+});
