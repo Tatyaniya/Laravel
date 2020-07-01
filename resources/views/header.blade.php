@@ -19,7 +19,7 @@
 <body>
 <div class="main-wrapper">
     <header class="main-header">
-        <div class="logotype-container"><a href="#" class="logotype-link"><img src="img/logo.png" alt="Логотип"></a></div>
+        <div class="logotype-container"><a href="#" class="logotype-link"><img src="/img/logo.png" alt="Логотип"></a></div>
         <nav class="main-navigation">
             <ul class="nav-list">
                 <li class="nav-list__item"><a href="#" class="nav-list__item__link">Главная</a></li>

@@ -4,14 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 /**
- * Class Category
+ * Class Order
  * @package App
  *
  * @property-read $id
+ * @property-read $product_id
  * @property-read $name
+ * @property-read $email
  */
-class Category extends Model
+class Order extends Model
 {
     //
 }

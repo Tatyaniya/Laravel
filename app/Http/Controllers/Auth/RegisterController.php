@@ -64,7 +64,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         //dd($data);
         if (isset($data['admin'])) {
             $admin = $data['admin'];

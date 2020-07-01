@@ -14,12 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-
+ // первая страница
 Route::get('/', 'ProductController@index')->name('home');
 
 Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
+    // все товары после авторизации
     Route::get('/home', 'ProductController@index')->name('home');
-    Route::get('/category/{id}', 'HomeController@category')->name('category');
-    Route::get('/buy', 'OrderController@buy')->name('buy');
+    // страница категории
+    Route::get('/category/{id}', 'ProductController@category')->name('category');
+    // перенаправление по кнопке "купить"
+    Route::get('/buy/{id}', 'ProductController@buy')->name('buy');
+    // сабмит заказа
+    Route::get('/order', 'OrderController@buy')->name('order');
+    // просмотр всех товаров
     Route::get('/orders', 'OrderController@orders')->name('orders');
 });
