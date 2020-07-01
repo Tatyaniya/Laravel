@@ -30,16 +30,16 @@
 
                         <div class="products-category__list__item">
                           <div class="products-category__list__item__title-product">
-                              <a href="{{ route('products', ['id' => $product->id]) }}">{{ $product->name  }}</a>
+                              <a href="{{ route('product', ['id' => $product->id]) }}">{{ $product->name  }}</a>
                           </div>
                           <div class="products-category__list__item__thumbnail">
-                              <a href="#" class="products-category__list__item__thumbnail__link">
+                              <a href="{{ route('product', ['id' => $product->id]) }}" class="products-category__list__item__thumbnail__link">
                                   <img src="/img/cover/game-{{ $product->getImageId() }}.jpg" alt="Preview-image">
                               </a>
                           </div>
                           <div class="products-category__list__item__description">
                               <span class="products-price">{{  $product->price }} руб.</span>
-                              <a href="{{ route('buy', ['id' => $product->id])  }}" class="btn btn-blue">Купить</a>
+                              <a href="{{ route('buy', ['id' => $product->id]) }}" class="btn btn-blue">Купить</a>
                           </div>
                         </div>
 

@@ -23,11 +23,11 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
     // страница категории
     Route::get('/category/{id}', 'ProductController@category')->name('category');
     // страница товара
-    Route::get('/products/{id}', 'ProductController@products')->name('products');
+    Route::get('/product/{id}', 'ProductController@product')->name('product');
     // перенаправление по кнопке "купить"
     Route::get('/buy/{id}', 'ProductController@buy')->name('buy');
     // сабмит заказа
     Route::post('/order', 'OrderController@order')->name('order');
-    // просмотр всех товаров
-    Route::get('/orders', 'OrderController@orders')->name('orders');
+    // просмотр заказов
+    Route::get('/orders', 'ProductController@admin')->name('orders');
 });

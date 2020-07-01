@@ -73,6 +73,13 @@
                         </form>
                     </div>
                 </div>
+                    @if ($is_admin)
+                        <div class="admin">
+                            <a class="nav-link link-orders" href="{{ route('orders') }}">
+                                Перейти к заказам
+                            </a>
+                        </div>
+                    @endif
                 @endguest
             </div>
         </div>

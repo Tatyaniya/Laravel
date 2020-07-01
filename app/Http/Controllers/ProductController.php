@@ -15,9 +15,9 @@ class ProductController extends Controller
     {
         $products = Product::query()->orderBy('id', 'desc')->paginate(9);
 
-        //dd($products);
         return view('home', [
             'products' => $products,
+            'is_admin' => $this->admin()
         ]);
     }
 
@@ -31,6 +31,7 @@ class ProductController extends Controller
         $products = Product::query()->where('category_id', '=', $id)->get();
         return view('category', [
                 'products' => $products,
+                'is_admin' => $this->admin()
             ]
         );
     }
@@ -45,13 +46,42 @@ class ProductController extends Controller
         $name = $current->name;
         $email = $current->email;
 
-        //dd($id);
         return view('order', [
                 'product_id' => $id,
                 'name' => $name,
                 'email' => $email,
+                'is_admin' => $this->admin()
             ]
         );
+    }
+
+    public function product($id)
+    {
+        $product = Product::query()->where('id', '=', $id)->first();
+
+        $other = Product::query()->limit(3)->get();
+
+        return view('product', [
+                'id' => $product['id'],
+                'name' => $product['name'],
+                'desc' => $product['desc'],
+                'price' => $product['price'],
+                'img' => $product->getImageId(),
+                'other' => $other,
+                'is_admin' => $this->admin()
+            ]
+        );
+    }
+
+    public function admin()
+    {
+        if (Auth::id()) {
+            $userId = Auth::id();
+
+            $user = new User();
+            $current = $user->getId($userId);
+            return $current->admin;
+        }
     }
 
 
