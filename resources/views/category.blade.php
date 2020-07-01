@@ -30,7 +30,7 @@
 
                         <div class="products-category__list__item">
                           <div class="products-category__list__item__title-product">
-                              <a href="#">{{ $product->name  }}</a>
+                              <a href="{{ route('products', ['id' => $product->id]) }}">{{ $product->name  }}</a>
                           </div>
                           <div class="products-category__list__item__thumbnail">
                               <a href="#" class="products-category__list__item__thumbnail__link">

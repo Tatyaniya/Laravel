@@ -22,10 +22,12 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
     Route::get('/home', 'ProductController@index')->name('home');
     // страница категории
     Route::get('/category/{id}', 'ProductController@category')->name('category');
+    // страница товара
+    Route::get('/products/{id}', 'ProductController@products')->name('products');
     // перенаправление по кнопке "купить"
     Route::get('/buy/{id}', 'ProductController@buy')->name('buy');
     // сабмит заказа
-    Route::get('/order', 'OrderController@buy')->name('order');
+    Route::post('/order', 'OrderController@order')->name('order');
     // просмотр всех товаров
     Route::get('/orders', 'OrderController@orders')->name('orders');
 });

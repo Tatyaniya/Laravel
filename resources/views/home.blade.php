@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('content');
+@section('content')
 
           <div class="content-top">
             <div class="content-top__text">Купить игры неборого без регистрации смс с торента, получить компкт диск, скачать Steam игры после оплаты</div>
@@ -29,7 +29,7 @@
                       @foreach($products as $product)
                           <div class="products-columns__item">
                               <div class="products-columns__item__title-product">
-                                  <a href="#" class="products-columns__item__title-product__link">{{ $product->name  }}</a>
+                                  <a href="{{ route('products', ['id' => $product->id]) }}" class="products-columns__item__title-product__link">{{ $product->name  }}</a>
                                </div>
                               <div class="products-columns__item__thumbnail">
                                   <a href="#" class="products-columns__item__thumbnail__link">
@@ -37,7 +37,7 @@
                                   </a></div>
                               <div class="products-columns__item__description">
                                   <span class="products-price">{{  $product->price }} руб</span>
-                                  <a href="{{ route('buy', ['id' => $product->id])  }}" class="btn btn-blue">Купить</a>
+                                  <a href="{{ route('buy', ['id' => $product->id]) }}" class="btn btn-blue">Купить</a>
                               </div>
                           </div>
                       @endforeach
