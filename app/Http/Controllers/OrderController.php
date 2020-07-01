@@ -26,4 +26,13 @@ class OrderController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function orders()
+    {
+        return view('orders', [
+                'orders' => Order::all(),
+                'is_admin' => $this->admin()
+            ]
+        );
+    }
 }

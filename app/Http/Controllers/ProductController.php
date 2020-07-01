@@ -73,16 +73,7 @@ class ProductController extends Controller
         );
     }
 
-    public function admin()
-    {
-        if (Auth::id()) {
-            $userId = Auth::id();
 
-            $user = new User();
-            $current = $user->getId($userId);
-            return $current->admin;
-        }
-    }
 
 
 }

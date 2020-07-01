@@ -29,5 +29,5 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
     // сабмит заказа
     Route::post('/order', 'OrderController@order')->name('order');
     // просмотр заказов
-    Route::get('/orders', 'ProductController@admin')->name('orders');
+    Route::get('/orders', 'OrderController@orders')->name('orders');
 });
