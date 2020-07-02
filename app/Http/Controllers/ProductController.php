@@ -35,8 +35,11 @@ class ProductController extends Controller
      */
     public function category($id)
     {
+        $cat = Category::query()->find($id);
         $products = Product::query()->where('category_id', '=', $id)->get();
+
         return view('category', [
+                'cat' => $cat->name,
                 'products' => $products,
                 'is_admin' => $this->admin()
             ]

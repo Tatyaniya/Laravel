@@ -10,7 +10,7 @@
             <div class="content-head__container">
               <div class="content-head__title-wrap">
                   <?php /** @var \App\Category $categories */ ?>
-                <div class="content-head__title-wrap__title bcg-title"></div>
+                <div class="content-head__title-wrap__title bcg-title">{{ $cat  }}</div>
               </div>
               <div class="content-head__search-block">
                 <div class="search-container">

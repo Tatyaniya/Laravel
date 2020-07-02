@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    /**
+     * переходим к списку категорий
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function catList()
     {
         $cats = Category::all();
@@ -18,6 +23,10 @@ class CategoryController extends Controller
         ]);
     }
 
+    /**
+     * переходим к созданию категории
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('createcat', [
@@ -25,6 +34,12 @@ class CategoryController extends Controller
         ]);
     }
 
+    /**
+     * добавляем категорию
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function add(Request $request)
     {
         $catName = $request->get('name');
@@ -47,6 +62,12 @@ class CategoryController extends Controller
         }
     }
 
+    /**
+     * редактируем категорию
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit($id)
     {
         $cat = Category::query()->find($id);
@@ -57,6 +78,12 @@ class CategoryController extends Controller
         ]);
     }
 
+    /**
+     * сохраняем категорию
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function save(Request $request)
     {
         $cat = Category::query()->find($request->id);
@@ -68,6 +95,12 @@ class CategoryController extends Controller
         return redirect()->route('home');
     }
 
+    /**
+     * удаляем категорию
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete(Request $request)
     {
         Category::destroy($request->id);
