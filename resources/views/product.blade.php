@@ -23,18 +23,24 @@
             <div class="content-main__container">
               <div class="product-container">
                   <?php /** @var \App\Product $product */ ?>
-                <div class="product-container__image-wrap"><img src="/img/cover/game-{{ $img }}.jpg" class="image-wrap__image-product"></div>
+                <div class="product-container__image-wrap"><img src="/img/cover/game-{{ $product->getImageId() }}.jpg" class="image-wrap__image-product"></div>
                 <div class="product-container__content-text">
-                  <div class="product-container__content-text__title">{{ $name  }}</div>
+                  <div class="product-container__content-text__title">{{ $product->name  }}</div>
                   <div class="product-container__content-text__price">
                     <div class="product-container__content-text__price__value">
-                      Цена: <b>{{  $price }}</b>
+                      Цена: <b>{{  $product->price }}</b>
                       руб
-                    </div><a href="{{ route('buy', ['id' => $id]) }}" class="btn btn-blue">Купить</a>
+                    </div><a href="{{ route('buy', ['id' => $product->id]) }}" class="btn btn-blue">Купить</a>
                   </div>
                   <div class="product-container__content-text__description">
-                      {{ $desc  }}
+                      {{ $product->desc }}
                   </div>
+                    @if ($is_admin)
+                        <div class="controls">
+                            <a href="{{route('edit', ['product' => $product])}}">Редактировать</a>
+                            <a href="{{route('delete', ['id' => $product->id])}}">Удалить</a>
+                        </div>
+                    @endif
                 </div>
               </div>
             </div>

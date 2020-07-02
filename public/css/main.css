@@ -1137,7 +1137,8 @@ a img.aligncenter {
   width: 130%;
   background-color: #d0e26c;
   z-index: -5; }
-.link-orders {
+.link-orders,
+.controls a {
     font-family: sans-serif;
     font-size: 17px;
     color: #000;
@@ -1145,7 +1146,49 @@ a img.aligncenter {
     border-bottom: 1px solid transparent;
     transition: all 0.4s ease;
 }
-.link-orders:hover {
+.link-orders:hover,
+.controls a:hover {
     color: #000;
     border-bottom: 1px solid #000;
+}
+.controls {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+.controls a {
+    color: #5096d9;
+    margin-right: 20px;
+}
+.controls__home {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.controls__home a {
+    font-size: 21px;
+}
+.panel-heading {
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+.table-product input {
+    width: 230px;
+    height: 30px;
+    padding-left: 12px;
+    background: transparent;
+    margin-bottom: 12px;
+    border-radius: 3px;
+}
+.table-product textarea#textarea {
+    width: 430px;
+    padding-top: 12px;
+    padding-left: 12px;
+    background: transparent;
+    margin-bottom: 12px;
+    border-radius: 3px;
+}
+#create-product {
+    width: 180px;
+    height: 33px;
+    margin-left: 72px;
+    border-radius: 3px;
 }

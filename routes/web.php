@@ -30,4 +30,12 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
     Route::post('/order', 'OrderController@order')->name('order');
     // просмотр заказов
     Route::get('/orders', 'OrderController@orders')->name('orders');
+    // добавление товара
+    Route::get('/create', 'ProductController@create')->name('create');
+    Route::post('/add', 'ProductController@add')->name('add');
+    // редактирование товара
+    Route::post('/edit/{product}', 'PriductController@edit')->name('edit');
+    Route::post('/save/{id}', 'PriductController@save')->name('save');
+    // удаление товара
+    Route::get('delete/{id}', 'ProductController@delete')->name('delete');
 });

@@ -21,7 +21,13 @@
               </div>
             </div>
             <div class="content-main__container">
+                @if ($is_admin)
+                    <div class="controls controls__home">
+                        <a href="{{route('create')}}">Добавить игру</a>
+                    </div>
+                @endif
               <div class="products-columns">
+
 
                   <?php /** @var \App\Product $product */ ?>
                   <?php /** @var Illuminate\Pagination\LengthAwarePaginator $products */ ?>
