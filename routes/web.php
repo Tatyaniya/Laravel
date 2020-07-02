@@ -34,8 +34,8 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
     Route::get('/create', 'ProductController@create')->name('create');
     Route::post('/add', 'ProductController@add')->name('add');
     // редактирование товара
-    Route::post('/edit/{product}', 'PriductController@edit')->name('edit');
-    Route::post('/save/{id}', 'PriductController@save')->name('save');
+    Route::get('/edit/{id}', 'ProductController@edit')->name('edit');
+    Route::post('/save/{id}', 'ProductController@save')->name('save');
     // удаление товара
     Route::get('delete/{id}', 'ProductController@delete')->name('delete');
 });

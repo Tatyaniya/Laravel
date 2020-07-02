@@ -37,7 +37,7 @@
                   </div>
                     @if ($is_admin)
                         <div class="controls">
-                            <a href="{{route('edit', ['product' => $product])}}">Редактировать</a>
+                            <a href="{{route('edit', ['id' => $product->id])}}">Редактировать</a>
                             <a href="{{route('delete', ['id' => $product->id])}}">Удалить</a>
                         </div>
                     @endif

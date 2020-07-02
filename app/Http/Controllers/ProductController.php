@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Product;
 use App\User;
@@ -104,56 +105,81 @@ class ProductController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
-    public function add(Request $request)
+    public function add(ProductRequest $request)
     {
         $catName = $request->get('category');
 
         $cat = Category::query()->where('name', '=', $catName)->first();
 
-        $product = Product::create([
-            'category_id' => $cat->id,
-            'name' => $request->get('name'),
-            'price' => $request->get('price'),
-            'email' => $request->get('email'),
-            'desc' => $request->get('desc')
-        ]);
+        if(isset($cat)) {
+            $product = Product::create([
+                'category_id' => $cat->id,
+                'name' => $request->get('name'),
+                'price' => $request->get('price'),
+                'email' => $request->get('email'),
+                'desc' => $request->get('desc')
+            ]);
 
-        $product->save();
+            $product->save();
 
-        $products = Product::query()->orderBy('id', 'desc')->paginate(9);
-
-        return view('home', [
-                'products' => $products,
-                'is_admin' => $this->admin()
-            ]
-        );
+            return redirect()->route('home');
+        } else {
+            echo 'Такой категории нет';
+            exit();
+        }
     }
 
+    /**
+     * переход на страницу редактировани товара
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     */
     public function edit($id)
     {
-        //$book = Book::query()->find($id);
-        //dd($id,$book);
-        //return view('books.edit', ['book' => $book]);
+        $product = Product::query()->find($id);
+        $cat = Category::query()->find($product->category_id);
+
+        return view('edit', [
+            'product' => $product,
+            'category' => $cat['name'],
+            'is_admin' => $this->admin()
+        ]);
     }
 
+    /**
+     * сохранение товара
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function save(Request $request)
     {
+        $product = Product::query()->find($request->id);
 
+        $cat = Category::query()->where('name', '=', $request->category)->first();
 
-//        $book = Book::query()->find($request->id);
-//
-//        $book->name = $request->name;
-//        $book->price = $request->price;
-//        $book->save();
-//        return redirect()->route('books');
+        if (isset($cat->id)) {
+            $product->name = $request->name;
+            $product->price = $request->price;
+            $product->desc = $request->desc;
+            $product->category_id = $cat->id;
+            $product->save();
+
+            return redirect()->route('home');
+        } else {
+            echo 'Такой категории нет';
+        }
     }
 
+    /**
+     * удаление товара
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete(Request $request)
     {
-//        Book::destroy($request->id);
-//        return redirect()->route('books');
-
+        Product::destroy($request->id);
+        return redirect()->route('home');
     }
-
-
 }
