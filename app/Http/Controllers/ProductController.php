@@ -152,7 +152,7 @@ class ProductController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Request $request)
+    public function save(ProductRequest $request)
     {
         $product = Product::query()->find($request->id);
 

@@ -1166,7 +1166,11 @@ a img.aligncenter {
 .controls__home a {
     font-size: 21px;
 }
-.panel-heading {
+.controls__home a:first-child {
+    margin-right: 150px;
+}
+.panel-heading,
+.card-header{
     margin-bottom: 30px;
     font-size: 20px;
 }
@@ -1187,9 +1191,29 @@ a img.aligncenter {
     border-radius: 3px;
     resize: none;
 }
-#create-product {
+#create-product,
+#create-cat {
     width: 180px;
     height: 33px;
     margin-left: 72px;
     border-radius: 3px;
+}
+.create-cat {
+    margin-bottom: 18px;
+}
+.catlist {
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 15px;
+    color: #5096d9;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s ease;
+}
+.catlist:hover {
+    color: #5096d9;
+    border-bottom: 1px solid #5096d9;
+}
+td {
+    padding: 5px 15px;
 }

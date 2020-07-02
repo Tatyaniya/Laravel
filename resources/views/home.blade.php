@@ -24,6 +24,7 @@
                 @if ($is_admin)
                     <div class="controls controls__home">
                         <a href="{{route('create')}}">Добавить игру</a>
+                        <a href="{{route('catlist')}}">Перейти к списку категорий</a>
                     </div>
                 @endif
               <div class="products-columns">
