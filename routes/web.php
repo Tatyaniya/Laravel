@@ -51,4 +51,6 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function(){
     Route::post('/savecat/{id}', 'CategoryController@save')->name('savecat');
     // удаление категории
     Route::get('deletecat/{id}', 'CategoryController@delete')->name('deletecat');
+
+    Route::get('send', 'MailController@send')->name('send');
 });

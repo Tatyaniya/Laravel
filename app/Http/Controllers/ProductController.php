@@ -48,6 +48,7 @@ class ProductController extends Controller
 
     /**
      * по кнопке "купить" переход на страницу заказа
+     *
      * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
