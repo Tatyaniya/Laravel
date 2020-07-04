@@ -24,9 +24,21 @@ class OrderController extends Controller
 
         $order->save();
 
-        return redirect()->route('home');
+        return redirect()->route('send');
     }
 
+    public function send()
+    {
+        return view('mail', [
+            'is_admin' => $this->admin()
+        ]);
+    }
+
+    /**
+     * перейти на страницу заказов
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function orders()
     {
         return view('orders', [
